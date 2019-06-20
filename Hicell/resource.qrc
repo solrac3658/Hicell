@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/new/prefix2">
+        <file>icono.png</file>
+    </qresource>
+    <qresource prefix="/formaPago">
+        <file>Cash-icon.png</file>
+        <file>redcompra.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix1">
+        <file>aceptar.png</file>
+        <file>cancelar.png</file>
+        <file>delete.png</file>
+        <file>buscar.png</file>
+        <file>hicell.png</file>
+    </qresource>
+</RCC>
