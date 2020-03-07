@@ -315,7 +315,7 @@
      <x>0</x>
      <y>0</y>
      <width>652</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVenta">
@@ -331,6 +331,7 @@
     </property>
     <addaction name="actionInventario"/>
     <addaction name="actionActualizar"/>
+    <addaction name="actionAlertas"/>
    </widget>
    <widget class="QMenu" name="menuContabilidad">
     <property name="title">
@@ -386,6 +387,11 @@
   <action name="actionCambio">
    <property name="text">
     <string>Cambio de Contraseña</string>
+   </property>
+  </action>
+  <action name="actionAlertas">
+   <property name="text">
+    <string>Alertas</string>
    </property>
   </action>
  </widget>

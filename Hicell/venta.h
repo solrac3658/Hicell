@@ -36,6 +36,7 @@ private slots:
     void mostrarInventario();
     void mostrarModificar();
     void mostrarCambiar();
+    void mostrarAlerta();
 
 
     void on_tableWidget_cellDoubleClicked(int row, int column);

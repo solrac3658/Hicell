@@ -25,8 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        alertainventario.cpp \
         cambiar.cpp \
         clave.cpp \
+        crearusuario.cpp \
         dialog.cpp \
         egreso.cpp \
         eliminar.cpp \
@@ -40,8 +42,10 @@ SOURCES += \
 
 HEADERS += \
         agregar.h \
+        alertainventario.h \
         cambiar.h \
         clave.h \
+        crearusuario.h \
         dialog.h \
         egreso.h \
         eliminar.h \
@@ -53,8 +57,10 @@ HEADERS += \
 
 FORMS += \
         agregar.ui \
+        alertainventario.ui \
         cambiar.ui \
         clave.ui \
+        crearusuario.ui \
         dialog.ui \
         egreso.ui \
         eliminar.ui \

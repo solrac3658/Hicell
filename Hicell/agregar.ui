@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
+    <width>690</width>
     <height>292</height>
    </rect>
   </property>
@@ -173,7 +173,7 @@
      <rect>
       <x>10</x>
       <y>130</y>
-      <width>521</width>
+      <width>661</width>
       <height>21</height>
      </rect>
     </property>
@@ -281,7 +281,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>300</x>
       <y>230</y>
       <width>75</width>
       <height>23</height>
@@ -423,14 +423,43 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEdit_aAlerta">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>190</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>170</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cantidad Alerta</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>550</width>
-     <height>21</height>
+     <width>690</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVenta">
@@ -446,6 +475,7 @@
     </property>
     <addaction name="actionInventario"/>
     <addaction name="actionActualizar"/>
+    <addaction name="actionAlertas"/>
    </widget>
    <widget class="QMenu" name="menuContabilidad">
     <property name="title">
@@ -501,6 +531,11 @@
   <action name="actionCambio">
    <property name="text">
     <string>Cambio de Contraseña</string>
+   </property>
+  </action>
+  <action name="actionAlertas">
+   <property name="text">
+    <string>Alertas</string>
    </property>
   </action>
  </widget>

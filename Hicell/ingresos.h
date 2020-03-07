@@ -31,6 +31,7 @@ private slots:
     void mostrarInventario();
     void mostrarModificar();
     void mostrarCambiar();
+    void mostrarAlerta();
 
     void on_dateEdit_iDate_userDateChanged(const QDate &date);
 

@@ -26,7 +26,7 @@ private slots:
     void Actualizar();
     void mostrarModificar();
     void mostrarCambiar();
-
+    void mostrarAlerta();
     void on_lineEdit_iCodigo_textEdited(const QString &arg1);
 
     void on_lineEdit_iDescripcion_textEdited(const QString &arg1);

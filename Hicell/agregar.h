@@ -35,6 +35,7 @@ private slots:
     void mostrarInventario();
     void mostrarModificar();
     void mostrarCambiar();
+    void mostrarAlerta();
 
 
 private:

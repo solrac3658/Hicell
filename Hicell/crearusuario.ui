@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CrearUsuario</class>
+ <widget class="QMainWindow" name="CrearUsuario">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuVenta">
+    <property name="title">
+     <string>Venta</string>
+    </property>
+    <addaction name="actionVenta"/>
+    <addaction name="actionModificar"/>
+   </widget>
+   <widget class="QMenu" name="menuInventario">
+    <property name="title">
+     <string>Inventario</string>
+    </property>
+    <addaction name="actionInventario"/>
+    <addaction name="actionActualizar"/>
+    <addaction name="actionAlertas"/>
+   </widget>
+   <widget class="QMenu" name="menuContabilidad">
+    <property name="title">
+     <string>Contabilidad</string>
+    </property>
+    <addaction name="actionContabilidad"/>
+    <addaction name="actionEgresos"/>
+   </widget>
+   <widget class="QMenu" name="menuConfiguraci_n">
+    <property name="title">
+     <string>Configuración</string>
+    </property>
+    <addaction name="actionCambio_de_Contrase_a"/>
+    <addaction name="actionActualizar_Usuario"/>
+    <addaction name="actionN_mina"/>
+   </widget>
+   <addaction name="menuVenta"/>
+   <addaction name="menuInventario"/>
+   <addaction name="menuContabilidad"/>
+   <addaction name="menuConfiguraci_n"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCambio_de_Contrase_a">
+   <property name="text">
+    <string>Cambio de Contraseña</string>
+   </property>
+  </action>
+  <action name="actionActualizar_Usuario">
+   <property name="text">
+    <string>Actualizar Usuario</string>
+   </property>
+  </action>
+  <action name="actionN_mina">
+   <property name="text">
+    <string>Nómina</string>
+   </property>
+  </action>
+  <action name="actionContabilidad">
+   <property name="text">
+    <string>Contabilidad</string>
+   </property>
+  </action>
+  <action name="actionEgresos">
+   <property name="text">
+    <string>Egresos</string>
+   </property>
+  </action>
+  <action name="actionInventario">
+   <property name="text">
+    <string>Inventario</string>
+   </property>
+  </action>
+  <action name="actionActualizar">
+   <property name="text">
+    <string>Actualizar</string>
+   </property>
+  </action>
+  <action name="actionVenta">
+   <property name="text">
+    <string>Venta</string>
+   </property>
+  </action>
+  <action name="actionModificar">
+   <property name="text">
+    <string>Modificar</string>
+   </property>
+  </action>
+  <action name="actionAlertas">
+   <property name="text">
+    <string>Alertas</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

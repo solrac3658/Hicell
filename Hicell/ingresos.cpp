@@ -7,6 +7,7 @@
 #include <inventario.h>
 #include <cambiar.h>
 #include <clave.h>
+#include <alertainventario.h>
 #include <QSqlQuery>
 
 Ingresos::Ingresos(QWidget *parent) :
@@ -42,6 +43,7 @@ Ingresos::Ingresos(QWidget *parent) :
        connect(ui->actionInventario,&QAction::triggered,this,&Ingresos::mostrarInventario);
        connect(ui->actionDetalle,&QAction::triggered,this,&Ingresos::mostrarModificar);
        connect(ui->actionCambio,&QAction::triggered,this,&Ingresos::mostrarCambiar);
+       connect(ui->actionAlertas,&QAction::triggered,this,&Ingresos::mostrarAlerta);
 
         ui->dateEdit_iDate->setDate(QDate::currentDate());
 
@@ -364,6 +366,14 @@ void Ingresos::mostrarCambiar() {
         cambiar->show();
     }
 
+}
+
+void Ingresos::mostrarAlerta() {
+
+    mydb.close();
+    AlertaInventario *alerta = new AlertaInventario();
+    this->destroy();
+    alerta->show();
 }
 
 void Ingresos::on_comboBox_tipo_currentIndexChanged(int index)

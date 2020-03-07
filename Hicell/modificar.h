@@ -26,6 +26,7 @@ private slots:
     void mostrarInventario();
     void mostrarVenta();
     void mostrarCambiar();
+    void mostrarAlerta();
 
     void on_dateEdit_userDateChanged(const QDate &date);
 

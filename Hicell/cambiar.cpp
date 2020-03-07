@@ -5,6 +5,7 @@
 #include <egreso.h>
 #include <inventario.h>
 #include <modificar.h>
+#include <alertainventario.h>
 #include <clave.h>
 #include <agregar.h>
 #include <QSqlQuery>
@@ -38,6 +39,7 @@ Cambiar::Cambiar(QWidget *parent) :
     connect(ui->actionInventario,&QAction::triggered,this,&Cambiar::mostrarInventario);
     connect(ui->actionDetalle,&QAction::triggered,this,&Cambiar::mostrarModificar);
     connect(ui->actionVenta,&QAction::triggered,this, &Cambiar::mostrarVenta);
+    connect(ui->actionAlertas,&QAction::triggered,this,&Cambiar::mostrarAlerta);
 }
 
 Cambiar::~Cambiar()
@@ -116,6 +118,14 @@ void Cambiar::mostrarVenta() {
         venta->show();
 
 
+}
+
+void Cambiar::mostrarAlerta() {
+
+    mydb.close();
+    AlertaInventario *alerta = new AlertaInventario();
+    this->destroy();
+    alerta->show();
 }
 
 void Cambiar::on_pushButton_guardar_clicked()

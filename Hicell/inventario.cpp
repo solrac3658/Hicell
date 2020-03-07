@@ -7,6 +7,7 @@
 #include <agregar.h>
 #include <clave.h>
 #include <cambiar.h>
+#include <alertainventario.h>
 #include <QSqlQuery>
 
 inventario::inventario(QWidget *parent) :
@@ -44,6 +45,7 @@ inventario::inventario(QWidget *parent) :
        connect(ui->actionActualizar,&QAction::triggered,this,&inventario::mostrarAgregar);
        connect(ui->actionDetalle,&QAction::triggered,this,&inventario::mostrarModificar);
        connect(ui->actionCambio,&QAction::triggered,this,&inventario::mostrarCambiar);
+       connect(ui->actionAlertas,&QAction::triggered,this,&inventario::mostrarAlerta);
        Actualizar();
 }
 
@@ -126,6 +128,14 @@ void inventario::mostrarCambiar() {
     }
 
 }
+void inventario::mostrarAlerta() {
+
+    mydb.close();
+    AlertaInventario *alerta = new AlertaInventario();
+    this->destroy();
+    alerta->show();
+}
+
 
 void inventario::Actualizar (){
 

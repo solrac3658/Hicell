@@ -26,6 +26,7 @@ private slots:
     void mostrarInventario();
     void mostrarModificar();
     void mostrarVenta();
+    void mostrarAlerta();
 
     void on_pushButton_cancelar_clicked();
 

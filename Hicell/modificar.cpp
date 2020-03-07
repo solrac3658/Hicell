@@ -7,6 +7,7 @@
 #include <modificar.h>
 #include <clave.h>
 #include <cambiar.h>
+#include <alertainventario.h>
 #include <QSqlQuery>
 
 Modificar::Modificar(QWidget *parent) :
@@ -55,6 +56,7 @@ Modificar::Modificar(QWidget *parent) :
        connect(ui->actionInventario,&QAction::triggered,this,&Modificar::mostrarInventario);
        connect(ui->actionVenta,&QAction::triggered,this,&Modificar::mostrarVenta);
        connect(ui->actionCambio,&QAction::triggered,this,&Modificar::mostrarCambiar);
+       connect(ui->actionAlertas,&QAction::triggered,this,&Modificar::mostrarAlerta);
 
        ui->dateEdit->setDate(QDate::currentDate());
 }
@@ -135,7 +137,13 @@ void Modificar::mostrarCambiar() {
     }
 
 }
+void Modificar::mostrarAlerta() {
 
+    mydb.close();
+    AlertaInventario *alerta = new AlertaInventario();
+    this->destroy();
+    alerta->show();
+}
 
 
 

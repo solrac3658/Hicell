@@ -9,6 +9,7 @@
 #include <modificar.h>
 #include <clave.h>
 #include <cambiar.h>
+#include <alertainventario.h>
 
 
 Venta::Venta(QWidget *parent) :
@@ -56,6 +57,7 @@ Venta::Venta(QWidget *parent) :
        connect(ui->actionInventario,&QAction::triggered,this,&Venta::mostrarInventario);
        connect(ui->actionDetalle,&QAction::triggered,this,&Venta::mostrarModificar);
        connect(ui->actionCambio,&QAction::triggered,this,&Venta::mostrarCambiar);
+       connect(ui->actionAlertas,&QAction::triggered,this,&Venta::mostrarAlerta);
 }
 
 Venta::~Venta()
@@ -184,6 +186,14 @@ void Venta::mostrarCambiar() {
         cambiar->show();
     }
 
+}
+
+void Venta::mostrarAlerta() {
+
+    mydb.close();
+    AlertaInventario *alerta = new AlertaInventario();
+    this->destroy();
+    alerta->show();
 }
 
 

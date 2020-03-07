@@ -7,6 +7,7 @@
 #include <modificar.h>
 #include <clave.h>
 #include <cambiar.h>
+#include <alertainventario.h>
 #include <QSqlQuery>
 #include <dialog.h>
 
@@ -23,6 +24,7 @@ Agregar::Agregar(QWidget *parent) :
 
    ui->lineEdit_aPrecio->setValidator( new QDoubleValidator(0, 9999999, 2, this) );
    ui->lineEdit_aCantidad->setValidator( new QIntValidator(0, 999999, this) );
+   ui->lineEdit_aAlerta->setValidator( new QIntValidator(0, 999999, this) );
 
     /******************************** Validadores de tipo *********************************************************/
 
@@ -46,6 +48,7 @@ Agregar::Agregar(QWidget *parent) :
     connect(ui->actionInventario,&QAction::triggered,this,&Agregar::mostrarInventario);
     connect(ui->actionDetalle,&QAction::triggered,this,&Agregar::mostrarModificar);
     connect(ui->actionCambio,&QAction::triggered,this,&Agregar::mostrarCambiar);
+    connect(ui->actionAlertas,&QAction::triggered,this,&Agregar::mostrarAlerta);
 }
 
 Agregar::~Agregar()
@@ -122,6 +125,13 @@ void Agregar::mostrarCambiar() {
 
 }
 
+void Agregar::mostrarAlerta() {
+
+    mydb.close();
+    AlertaInventario *alerta = new AlertaInventario();
+    this->destroy();
+    alerta->show();
+}
 
 void Agregar::on_pushButton_aBuscar_clicked()
 {
@@ -145,18 +155,21 @@ void Agregar::on_pushButton_aBuscar_clicked()
                 QString precioC;
                 QString cantidad;
                 QString tipo;
+                QString alerta;
                 int fieldNo1 = query.record().indexOf("descripcion");
                 int fieldNo2 = query.record().indexOf("precio");
                 int fieldNo3 = query.record().indexOf("cantidad");
                 int fieldNo4 = query.record().indexOf("tipo");
                 int fieldNo5 = query.record().indexOf("costo");
+                int fieldNo6 = query.record().indexOf("alerta");
                 while(query.next()){
                     count++;
                     descripcion=query.value(fieldNo1).toString();
                     precioV=query.value(fieldNo2).toString();
                     cantidad=query.value(fieldNo3).toString();
                     tipo=query.value(fieldNo4).toString();
-                     precioC=query.value(fieldNo5).toString();
+                    precioC=query.value(fieldNo5).toString();
+                    alerta=query.value(fieldNo6).toString();
                 }
 
                 if(count ==1){
@@ -170,6 +183,8 @@ void Agregar::on_pushButton_aBuscar_clicked()
                     ui->lineEdit_aPrecio->setEnabled(true);
                     ui->lineEdit_aCantidad->setText(cantidad);
                     ui->lineEdit_aCantidad->setEnabled(true);
+                    ui->lineEdit_aAlerta->setText(alerta);
+                    ui->lineEdit_aAlerta->setEnabled(true);
                     ui->comboBox_aTipo->setEnabled(true);
 
                     if(tipo=="Producto"){
@@ -177,6 +192,7 @@ void Agregar::on_pushButton_aBuscar_clicked()
                     }else {
                         ui->comboBox_aTipo->setCurrentIndex(1);
                         ui->lineEdit_aCantidad->setEnabled(false);
+                        ui->lineEdit_aAlerta->setEnabled(false);
                     }
 
                 }else {
@@ -198,6 +214,7 @@ void Agregar::on_pushButton_aBuscar_clicked()
                         ui->lineEdit_aPrecio->setEnabled(true);
                         ui->lineEdit_aDescripcion->setEnabled(true);
                         ui->lineEdit_aPrecioC->setEnabled(true);
+                        ui->lineEdit_aAlerta->setEnabled(true);
                     }
 
                     if(result==0) {
@@ -207,6 +224,7 @@ void Agregar::on_pushButton_aBuscar_clicked()
                         ui->lineEdit_aPrecio->clear();
                         ui->lineEdit_aPrecioC->clear();
                         ui->lineEdit_aCantidad->clear();
+                        ui->lineEdit_aAlerta->clear();
                         ui->comboBox_aTipo->setCurrentIndex(0);
                         nuevo = false;
                     }
@@ -228,9 +246,12 @@ void Agregar::on_comboBox_aTipo_currentIndexChanged(int index)
         ui->lineEdit_aCantidad->setEnabled(false);
         ui->lineEdit_aPrecioC->setText("0");
         ui->lineEdit_aPrecioC->setEnabled(false);
+        ui->lineEdit_aAlerta->setText("0");
+        ui->lineEdit_aAlerta->setEnabled(false);
     } else {
         ui->lineEdit_aCantidad->setEnabled(true);
         ui->lineEdit_aPrecioC->setEnabled(true);
+        ui->lineEdit_aAlerta->setEnabled(true);
     }
 }
 
@@ -241,20 +262,23 @@ void Agregar::on_pushButton_aGuardar_clicked()
     QString Precio = ui->lineEdit_aPrecio->text();
     QString PrecioC = ui->lineEdit_aPrecioC->text();
     QString Cantidad = ui->lineEdit_aCantidad->text();
+    QString Alerta = ui->lineEdit_aAlerta->text();
     QString guardarTipo = ui->comboBox_aTipo->currentText();
     QSqlQuery query;
     int guardarCantidad = Cantidad.toInt();
+    int guardarAlerta = Alerta.toInt();
     float guardarPrecio = Precio.toFloat();
     float guardarPrecioC = PrecioC.toFloat();
 
     if(nuevo){
-        query.prepare("INSERT INTO producto (codigo, descripcion, precio, cantidad, tipo, costo) " "VALUES (:codigo, :descripcion, :precio, :cantidad, :tipo, :costo)");
+        query.prepare("INSERT INTO producto (codigo, descripcion, precio, cantidad, tipo, costo, alerta) " "VALUES (:codigo, :descripcion, :precio, :cantidad, :tipo, :costo, :alerta)");
         query.bindValue(":codigo",guardarCodigo);
         query.bindValue(":descripcion",guardarDescripcion);
         query.bindValue(":precio", guardarPrecio);
         query.bindValue(":cantidad", guardarCantidad);
         query.bindValue(":tipo", guardarTipo);
         query.bindValue(":costo", guardarPrecioC);
+        query.bindValue(":alerta", guardarAlerta);
         if (!query.exec()){
              qDebug() << "SqLite error:" << query.lastError().text() << ", SqLite error code:" << query.lastError();
              msgBox.setText("Ocurrio un Error Almacenando el Producto");
@@ -265,10 +289,11 @@ void Agregar::on_pushButton_aGuardar_clicked()
             }
         nuevo=false;
     }else {
-        query.prepare("UPDATE producto SET descripcion = '"+guardarDescripcion+"', precio = :precio, cantidad = :cantidad, tipo = '"+guardarTipo+"', costo = :costo where codigo ='"+guardarCodigo+"'");
+        query.prepare("UPDATE producto SET descripcion = '"+guardarDescripcion+"', precio = :precio, cantidad = :cantidad, tipo = '"+guardarTipo+"', costo = :costo, alerta = :alerta where codigo ='"+guardarCodigo+"'");
         query.bindValue(":precio", guardarPrecio);
         query.bindValue(":cantidad", guardarCantidad);
         query.bindValue(":costo", guardarPrecioC);
+        query.bindValue(":alerta", guardarAlerta);
 
         if (!query.exec()){
              qDebug() << "SqLite error:" << query.lastError().text() << ", SqLite error code:" << query.lastError();
@@ -284,6 +309,7 @@ void Agregar::on_pushButton_aGuardar_clicked()
     ui->lineEdit_aPrecio->clear();
     ui->lineEdit_aPrecioC->clear();
     ui->lineEdit_aCantidad->clear();
+    ui->lineEdit_aAlerta->clear();
     ui->comboBox_aTipo->setCurrentIndex(0);
     ui->comboBox_aTipo->setEnabled(false);
     ui->pushButton_aGuardar->setEnabled(false);
@@ -291,4 +317,5 @@ void Agregar::on_pushButton_aGuardar_clicked()
     ui->lineEdit_aPrecio->setEnabled(false);
     ui->lineEdit_aPrecioC->setEnabled(false);
     ui->lineEdit_aDescripcion->setEnabled(false);
+    ui->lineEdit_aAlerta->setEnabled(false);
 }

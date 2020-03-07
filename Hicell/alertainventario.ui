@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Cambiar</class>
- <widget class="QMainWindow" name="Cambiar">
+ <class>AlertaInventario</class>
+ <widget class="QMainWindow" name="AlertaInventario">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>309</width>
-    <height>329</height>
+    <width>443</width>
+    <height>415</height>
    </rect>
   </property>
   <property name="palette">
    <palette>
     <active>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
@@ -33,6 +42,15 @@
      </colorrole>
     </active>
     <inactive>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
@@ -53,6 +71,15 @@
      </colorrole>
     </inactive>
     <disabled>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
@@ -75,17 +102,53 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Cambiar Contraseña</string>
+   <string>Alertas Inventario</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resource.qrc">
     <normaloff>:/new/prefix2/icono.png</normaloff>:/new/prefix2/icono.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Alertas Inventario:</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>401</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+   </widget>
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>240</x>
       <y>20</y>
       <width>181</width>
       <height>51</height>
@@ -101,101 +164,13 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>90</y>
-      <width>131</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Contraseña Nueva</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_guardar">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>260</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Guardar</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>210</y>
-      <width>231</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::Password</enum>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_cUuario">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>130</y>
-      <width>231</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::Password</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_cClave">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>180</y>
-      <width>141</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Repetir Contraseña:</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_cancelar">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>260</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cancelar</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>309</width>
+     <width>443</width>
      <height>22</height>
     </rect>
    </property>
@@ -226,6 +201,7 @@
      <string>Configuración</string>
     </property>
     <addaction name="actionCambio"/>
+    <addaction name="actionActualizar_Usuario"/>
    </widget>
    <addaction name="menuVenta"/>
    <addaction name="menuInventario"/>
@@ -233,11 +209,18 @@
    <addaction name="menuConfiguraci_n"/>
   </widget>
   <action name="actionVenta">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
-    <string>Crear</string>
+    <string>Venta</string>
+   </property>
+  </action>
+  <action name="actionDetalle">
+   <property name="text">
+    <string>Modificar Venta</string>
+   </property>
+  </action>
+  <action name="actionInventario">
+   <property name="text">
+    <string>Inventario</string>
    </property>
   </action>
   <action name="actionActualizar">
@@ -245,37 +228,32 @@
     <string>Actualizar</string>
    </property>
   </action>
-  <action name="actionContabilidad">
-   <property name="text">
-    <string>Visualizar</string>
-   </property>
-  </action>
-  <action name="actionEgresos">
-   <property name="text">
-    <string>Agregar Egresos</string>
-   </property>
-  </action>
-  <action name="actionInventario">
-   <property name="text">
-    <string>Visualizar</string>
-   </property>
-  </action>
-  <action name="actionDetalle">
-   <property name="text">
-    <string>Modificar</string>
-   </property>
-  </action>
-  <action name="actionCambio">
+  <action name="actionAlertas">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="text">
+    <string>Alertas</string>
+   </property>
+  </action>
+  <action name="actionContabilidad">
+   <property name="text">
+    <string>Contabilidad</string>
+   </property>
+  </action>
+  <action name="actionEgresos">
+   <property name="text">
+    <string>Egresos</string>
+   </property>
+  </action>
+  <action name="actionCambio">
+   <property name="text">
     <string>Cambio de Contraseña</string>
    </property>
   </action>
-  <action name="actionAlertas">
+  <action name="actionActualizar_Usuario">
    <property name="text">
-    <string>Alertas</string>
+    <string>Actualizar Usuario</string>
    </property>
   </action>
  </widget>

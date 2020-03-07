@@ -7,6 +7,7 @@
 #include <inventario.h>
 #include <cambiar.h>
 #include <clave.h>
+#include <alertainventario.h>
 #include <QDateTime>
 
 Egreso::Egreso(QWidget *parent) :
@@ -44,6 +45,7 @@ Egreso::Egreso(QWidget *parent) :
        connect(ui->actionInventario,&QAction::triggered,this,&Egreso::mostrarInventario);
        connect(ui->actionDetalle,&QAction::triggered,this,&Egreso::mostrarModificar);
        connect(ui->actionCambio,&QAction::triggered,this,&Egreso::mostrarCambiar);
+       connect(ui->actionAlertas,&QAction::triggered,this,&Egreso::mostrarAlerta);
 }
 
 Egreso::~Egreso()
@@ -122,6 +124,14 @@ void Egreso::mostrarCambiar() {
         cambiar->show();
     }
 
+}
+
+void Egreso::mostrarAlerta() {
+
+    mydb.close();
+    AlertaInventario *alerta = new AlertaInventario();
+    this->destroy();
+    alerta->show();
 }
 
 
